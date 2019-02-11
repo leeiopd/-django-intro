@@ -134,3 +134,53 @@
        {{dinner}}
    </h1>
    ```
+
+
+
+
+## 4. Variable Routing
+
+1. url 설정
+
+   ```python
+   path('home/you/<name>', views.you)
+   path('home/cube/<int:num>', views.num)
+   ```
+
+2.  view 파일 설정
+
+   ```python
+   def you(request, name):
+       return render(request, 'you.html', {'name':name})
+   
+   def cube(request, num):
+       result = num**3
+       return render(request, 'cube.html', {'num':num, 'result':result})
+   ```
+
+3.  template 파일 설정
+
+   ```django
+   <!-- name.html -->
+   {% extends 'base.html' %}
+   {% block title %}이름 출력하기{% endblock %}
+   
+   {% block body %}
+   <p>이름 : {{name}}</p>
+   <p>{{name}} 안녕?</p>
+   {% endblock %}
+   ```
+
+   ```django
+   <!-- cube.html -->
+   {% extends 'base.html' %}
+   {% block title %}세제곱 구하기{% endblock %}
+   
+   {% block body %}
+   
+   <p> {{num}}의 세제곱은 {{cube_num}} !!!</p>
+   
+   {% endblock %}
+   ```
+
+
