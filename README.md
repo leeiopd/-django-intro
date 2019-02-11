@@ -184,3 +184,78 @@
    ```
 
 
+## 5. Form data
+
+1. `ping`
+
+   1. 요청 url 설정
+
+      ```python
+      path('home/ping/', view.ping)
+      ```
+
+   2.  view 설정
+
+      ```python
+      def ping(request):
+          return render(request, 'ping.html')
+      ```
+
+   3. template 설정
+
+      ```html
+      <form aciton="/home/ping/">
+          name : <input type="text" name="user_name"> <br>
+          password : <input type="password" name="password">
+          <input type="submit" value="입력">
+      </form>
+      ```
+
+2. `pong`
+
+   1. 요청 url 설정
+
+      ```python
+      path('home/pong/', views.pong)
+      ```
+
+   2. view 설정
+
+      ```python
+      def pong(request):
+          user_name = request.GET.get('user_name')
+          password = request.GET.get('password')
+          return render(request, 'pong.html', {'user_name':user_name, 'password':password})
+      ```
+
+   3. template 설정
+
+      ```html
+      <h1>
+          name : {{user_name}}
+          password : {{password}}
+      </h1>
+      ```
+
+3. POST 요청 처리
+
+   1. 요청 FORM 수정
+
+      ```django
+      <form action="/home/pong/" method="POST">
+          {% csrf_token %}
+      </form>
+      ```
+
+   2. view 수정
+
+      ```python
+      def pong(request):
+          message = request.POST.get('message')
+      ```
+
+   - `csrf_token`은 보안을 위해 django에서 기본적으로 설정되어 있는 것이다.
+     - SCRF 공격 : Cross Site Request Forgery
+     - form을 통해 POST 요청을 보낸다는 것은 데이터베이스에 반영되는 경우가 대부분인데, 해당 요청을 우리가 만든 정해진 form에서 보내는지 검증하는 것.
+     - 실제로 input type hidden으로 특정한 hash값이 담겨 있는 것을 볼 수 있다.
+     - `settings.py`에 `MIDDLEWARE`설정에 보면 csrf 관련된 내용이 설정된 것을 볼 수 있다. 
