@@ -27,5 +27,8 @@ urlpatterns = [
     path('home/cube/<num>/', views.cube),
     path('home/ping/', views.ping),
     path('home/pong/', views.pong),
+    path('home/user_new/', views.user_new),
+    path('home/user_read/', views.user_read)
+    
     
 ]

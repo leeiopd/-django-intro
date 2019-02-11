@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block title %}POST 사용{% endblock %}
+
+{% block body %}
+<form action="/home/user_read/" method="POST">
+    {% csrf_token %}
+    name : <input type="text" name="user_name"> <br>
+    password : <input type="password" name="password">
+    <input type="submit" value="입력">
+</form>
+{% endblock %}
