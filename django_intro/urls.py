@@ -23,7 +23,9 @@ urlpatterns = [
     # 요청이 home/로 오면 views의 index 함수를 실행시킨다.
     path('home/', views.index),
     path('home/dinner/', views.dinner),
-    path('home/you/<name>', views.you),
-    path('home/cube/<num>', views.cube),
+    path('home/you/<name>/', views.you),
+    path('home/cube/<num>/', views.cube),
+    path('home/ping/', views.ping),
+    path('home/pong/', views.pong),
     
 ]

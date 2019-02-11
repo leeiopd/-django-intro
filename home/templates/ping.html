@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block title %} ping {% endblock %}
+
+{% block body %}
+<form action="/home/pong">
+ping 입력 : <input type="text" name="ping">
+<input type="submit" value="입력">
+</form>
+{% endblock %}
