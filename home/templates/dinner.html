@@ -1,13 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <h1>저녁 메뉴 추천</h1>
-    <p>{{dinner}} 쳐묵쳐묵</p>
-</body>
-</html>
+{% extends 'base.html' %}
+{% block title %} 저녁메뉴추천 {% endblock %}
+ {% block body %}
+<h1>저녁 메뉴 추천</h1>
+{% if dinner == '치킨' %}
+<p> 푸라닭 먹자 </p>
+{% else %}
+<p>{{dinner}} 쳐묵쳐묵</p>
+{% endif %}
+<hr> {% for menu in box %}
+<p>
+    {{menu}}
+</p>
+{% endfor %}
+{% endblock %}
+    
