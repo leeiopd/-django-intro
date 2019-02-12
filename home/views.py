@@ -1,4 +1,5 @@
 from django.shortcuts import render, HttpResponse
+import datetime
 import random
 
 # Create your views here.
@@ -42,3 +43,16 @@ def user_read(request):
     user_name = request.POST.get('user_name')
     user_password = request.POST.get('password')
     return render(request, 'user_read.html', {'user_name':user_name, "user_password":user_password})
+    
+def template_example(request):
+    my_info = {'name':'이주호', 'age':'30', 'nickname':'ho'}
+    my_list = ['짜장면', '짬뽕', '탕수육', '양장피']
+    my_sentence = 'Life is short, you need python!'
+    messages = ['apple', 'banana', 'cucumber', 'mango']
+    datetimenow = datetime.datetime.now()
+    empty_list = []
+    
+    return render(request, 'template_example.html', {'my_info':my_info, 'my_list':my_list, 'my_sentence':my_sentence, 'messages':messages, 'datetimenow':datetimenow, 'empty_list':empty_list})
+    
+def static_example(request):
+    return render(request, 'static_example.html')
